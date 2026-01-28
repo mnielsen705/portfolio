@@ -6,14 +6,16 @@ categories: [React, TypeScript, Supabase, Vercel]
 
 ## Overview
 
-A full-featured calendar application built with React, TypeScript, and Supabase. The app provides an intuitive interface for managing events with support for recurring schedules and real-time synchronization.
+A full-featured calendar application built with React, TypeScript, and Supabase. The app provides an intuitive interface for managing events across multiple calendars with support for recurring schedules and drag-and-drop rescheduling.
 
 Key features include:
 
-- Create, edit, and delete calendar events
+- Multiple color-coded calendars with visibility toggles
+- Create, edit, and delete events with drag-and-drop rescheduling
 - Support for recurring events using RRule
+- All-day and timed events with location support
 - Multiple calendar views (month, week, day)
-- Real-time data sync with Supabase backend
+- Supabase backend for data persistence
 - Responsive design with Tailwind CSS
 
 ## Live Product Demo

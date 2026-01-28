@@ -22,7 +22,7 @@ title: "Welcome to My Product Management Portfolio"
 ::: {.g-col-12 .g-col-md-6 .card}
 
 ### [Calendar App](projects/project-1.qmd)
-A full-featured calendar application with event management, recurring events, and real-time sync. 
+A full-featured calendar with multiple color-coded calendars, drag-and-drop scheduling, and recurring events. 
 
 :::
 
