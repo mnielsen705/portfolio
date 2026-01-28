@@ -19,7 +19,11 @@ title: "About Me"
 
 ## Background
 
-Write a compelling narrative about your background, education, and what drives your passion for product management. This is your chance to tell your story and connect with potential employers or collaborators.
+I'm a strategic business student driven by a passion for solving meaningful problems. My education has shaped the way I approach challenges — balancing big-picture thinking with practical execution, and always focusing on creating real value for users and organizations.
+
+I'm especially drawn to work at the intersection of strategy, technology, and customer experience. I enjoy turning ambiguous problems into clear, actionable solutions and collaborating with others to bring ideas to life.
+
+That's what led me to product management. I'm excited by the opportunity to build innovative software products that scale, evolve, and make a positive impact. More than anything, I'm motivated by building with purpose — creating thoughtful solutions that genuinely improve how people work and live.
 
 ### Education
 
@@ -27,7 +31,7 @@ Write a compelling narrative about your background, education, and what drives y
 - Brigham Young University – Marriott School of Business (In Progress)
 - Overall GPA: 3.94 / 4.00 | Major GPA: 3.94
 - Academic Scholarship | BYU Dean's List (2022–2023)
-- **Relevant Coursework**: List key courses related to product management, analytics, or business
+- **Relevant Coursework**: Foundations of Strategy, Strategic Thinking, Economics of Strategy, Strategy Analytics, Advanced Competitive Strategy, Creating Digital Products with AI. Planning to take Product Management and a Product Management Lecture Series.
 
 ### Experience
 
@@ -86,4 +90,4 @@ Write a compelling narrative about your background, education, and what drives y
 
 ### What's Next
 
-Describe your career goals and what type of opportunities you're seeking. This helps visitors understand how they might work with you or whether you'd be a good fit for their organization.
+I'm pursuing a career in product management within the software space, where I can combine strategic thinking, customer empathy, and a love of problem-solving to build meaningful solutions. I'm especially motivated by opportunities to create products that have a positive, lasting impact on the people and businesses who use them. Whether improving internal processes or solving real customer pain points, I'm driven by turning complex problems into thoughtful, innovative products that make a difference.
