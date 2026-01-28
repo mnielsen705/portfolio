@@ -23,40 +23,66 @@ Write a compelling narrative about your background, education, and what drives y
 
 ### Education
 
-- Strategic Business Management, Brigham Young University (In Progress)
+- **Bachelor of Science in Strategic Business Management**, Product Management Track
+- Brigham Young University – Marriott School of Business (In Progress)
+- Overall GPA: 3.93 / 4.00 | Major GPA: 3.86
+- Academic Scholarship | BYU Dean's List (2022–2023)
 - **Relevant Coursework**: List key courses related to product management, analytics, or business
-- **Academic Achievements**: Honor societies, relevant projects, or awards
 
 ### Experience
 
-#### Job/Internship Title - Company Name
-*Dates*
+#### Special Needs Assistant - Utah Department of Health and Human Services
+*Aug 2025 – Present* | Provo, UT
 
-- Key accomplishment or responsibility
-- Another achievement with quantifiable results
-- Skills or technologies used
+- Worked one-on-one with an individual affected by multiple cognitive disabilities to improve learning and communication outcomes
 
-#### Another Position - Company Name
-*Dates*
+#### Accounting and Tax Intern - DBN Tax
+*Jan 2023 – Aug 2023; Feb 2025 – Jun 2025* | American Fork, UT
 
-- What you contributed to the organization
-- Projects you worked on
-- Impact you made
+- Prepared and filed taxes for 200+ business and personal accounts
+- Worked with customer service to answer 20–60 tax-related questions daily
+
+#### Test Lab Intern - CoDiagnostics, Inc.
+*Jun 2022 – Aug 2022* | Salt Lake, UT
+
+- Tested 68 assays daily on PCR machines to aid in the test process of machine development
+- Decreased turnaround time by 20%, enabling faster production outcomes
+
+#### Molecular Biology Intern - Idaho Molecular
+*Jun 2021 – Aug 2021* | South Salt Lake, UT
+
+- Developed assays as part of the development of an affordable PCR device start-up, researching, producing, and testing up to four chemical combinations daily
+- Worked closely with management in fulfilling company objectives
+
+### Leadership & Service
+
+#### Volunteer Representative - The Church of Jesus Christ of Latter-day Saints
+*Aug 2023 – Feb 2025* | El Paso, TX
+
+- Taught, trained, and mentored individuals from diverse cultural and socioeconomic backgrounds
+- Developed and led weekly training meetings for groups of 10–35 peers, leading to a 40% growth in outcomes
 
 ### Skills & Interests
 
 **Technical Skills**
-- Programming languages (Python, R, SQL)
-- Analytics tools (Tableau, Power BI, Google Analytics)
-- Product management tools (Jira, Confluence, Figma)
+
+- Microsoft Excel
+- R
+- Tableau
+- Digital Product Building with AI (Claude Code)
+- Process Mapping and Strategic Frameworks
 
 **Soft Skills**
+
 - Communication and presentation
 - Cross-functional collaboration
 - Strategic thinking and problem-solving
 
 **Interests**
-Share what you're passionate about outside of work - this helps humanize your professional brand and can be great conversation starters.
+
+- Vibe coding
+- Avid Puzzler
+- Skier
 
 ### What's Next
 

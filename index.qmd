@@ -21,10 +21,8 @@ title: "Welcome to My Product Management Portfolio"
 
 ## Featured Projects
 
-::: {.g-col-12 .g-col-md-6 .card}
-
-### [Calendar App](projects/project-1.qmd)
-A full-featured calendar with multiple color-coded calendars, drag-and-drop scheduling, and recurring events. 
-
-:::
+<div class="g-col-12 g-col-md-6 card">
+<h3><a href="projects/project-1.html">Calendar App</a></h3>
+<p>A full-featured calendar with multiple color-coded calendars, drag-and-drop scheduling, and recurring events.</p>
+</div>
 
