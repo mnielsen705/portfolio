@@ -17,6 +17,8 @@ title: "Welcome to My Product Management Portfolio"
 
 :::
 
+<p style="text-align: center;">Welcome to my portfolio! I'm a Strategic Business Management student at BYU passionate about building products that solve real problems. Here you'll find projects I've built, problems I'm exploring, and a bit about my journey.</p>
+
 ## Featured Projects
 
 ::: {.g-col-12 .g-col-md-6 .card}
