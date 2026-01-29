@@ -524,10 +524,14 @@ img {
 }
 
 .quarto-title-block {
-  margin-bottom: 0;
+  display: none;
 }
 
-.quarto-title-block .quarto-title {
+#title-block-header {
+  display: none;
+}
+
+h1.title {
   display: none;
 }
 
