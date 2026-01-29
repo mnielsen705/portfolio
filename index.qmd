@@ -1,7 +1,11 @@
 ---
 title: "Meredith Chase's Product Management Portfolio"
 title-block-banner: false
-title-block-style: none
+format:
+  html:
+    title-block-style: none
+    include-before-body: |
+      <style>.quarto-title { display: none; }</style>
 ---
 
 ::: {.hero-banner .text-center}
