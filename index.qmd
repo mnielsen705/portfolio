@@ -1,5 +1,5 @@
 ---
-title: "Welcome to My Product Management Portfolio"
+title: "Meredith Chase's Product Management Portfolio"
 ---
 
 ::: {.hero-banner .text-center}

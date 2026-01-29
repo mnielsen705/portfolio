@@ -3,7 +3,7 @@ project:
   output-dir: _site
 
 website:
-  title: ""
+  title: "Meredith Chase's Product Management Portfolio"
   favicon: images/merchase_favicon.png
   navbar:
     background: primary
