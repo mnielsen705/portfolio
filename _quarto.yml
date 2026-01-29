@@ -6,6 +6,7 @@ website:
   title: "Meredith Chase's Product Management Portfolio"
   favicon: images/merchase_favicon.png
   navbar:
+    title: false
     background: primary
     left:
       - href: index.qmd
