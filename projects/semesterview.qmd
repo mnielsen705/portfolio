@@ -1,0 +1,65 @@
+---
+title: "SemesterView"
+date: "2026-03-10"
+categories: [Next.js, TypeScript, Supabase, Vercel]
+---
+
+## Overview
+
+A semester-long calendar tool for college students that surfaces scheduling conflicts before they happen. Unlike week-by-week planners, SemesterView shows the entire semester at once — layering recurring commitments (classes, work shifts, meetings) on top of variable obligations (exams, deadlines, events) so students can spot collisions early and protect time for what matters.
+
+Key features include:
+
+- Full-semester view from first day of classes through last final
+- Create recurring commitments with days of week, start/end time, and date range
+- Create variable obligations (exams, deadlines, personal and family events)
+- Automatic conflict detection — flags days with 3+ high-priority events or exact time overlaps
+- Import calendar events directly from Canvas, Learning Suite, or Google Calendar (.ics / .ical)
+- Multiple semesters with quick switching
+- Real-time updates when events are added, edited, or deleted
+- User authentication with 30-day session persistence
+- Mobile-responsive design (320px minimum width)
+
+## Live Product Demo
+
+<div class="d-flex justify-content-center gap-3 my-4">
+  <!-- Open App button -->
+  <a class="btn btn-primary d-inline-flex align-items-center"
+     href="https://semesterview-app.vercel.app/"
+     target="_blank" rel="noopener"
+     aria-label="Open live app">
+    <i class="fa-solid fa-window-restore me-2" aria-hidden="true"></i>
+    Open App in New Tab
+  </a>
+
+  <!-- GitHub Source button -->
+  <a class="btn btn-outline-dark d-inline-flex align-items-center"
+     href="https://github.com/mnielsen705/semesterview-app"
+     target="_blank" rel="noopener"
+     aria-label="Open GitHub source">
+    <i class="fa-brands fa-github me-2" aria-hidden="true"></i>
+    View source on GitHub
+  </a>
+</div>
+
+<iframe src="https://semesterview-app.vercel.app/"
+        style="width:100%; height:900px; border:none;"
+        allowfullscreen>
+</iframe>
+
+## Technical Details
+
+**Framework/Stack:** Next.js 16, TypeScript
+
+**UI Components:** shadcn/ui, Tailwind CSS v4
+
+**Backend:** Supabase (PostgreSQL + Auth)
+
+**Deployment:** Vercel
+
+**Tools Used:**
+
+- Claude Code for development assistance
+- react-hook-form + Zod for form validation
+- Custom iCal parser for calendar imports
+- Supabase SSR for cookie-based authentication

@@ -19,6 +19,8 @@ website:
         menu:
           - href: projects/project-1.qmd
             text: Calendar App
+          - href: projects/semesterview.qmd
+            text: SemesterView
           #- href: projects/project-2.qmd
           #  text: Business Case Presentation
           #- href: projects/project-3.qmd

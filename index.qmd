@@ -32,3 +32,8 @@ format:
 <p>A full-featured calendar with multiple color-coded calendars, drag-and-drop scheduling, and recurring events.</p>
 </div>
 
+<div class="g-col-12 g-col-md-6 card">
+<h3><a href="projects/semesterview.html">SemesterView</a></h3>
+<p>A semester-long calendar that surfaces scheduling conflicts before they happen by showing your entire semester at once.</p>
+</div>
+
