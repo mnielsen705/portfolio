@@ -25,7 +25,7 @@ Key features include:
 <div class="d-flex justify-content-center gap-3 my-4 flex-wrap">
   <!-- Open App button -->
   <a class="btn btn-primary d-inline-flex align-items-center"
-     href="https://semesterview-app.vercel.app/"
+     href="https://semesterview-app.vercel.app/login"
      target="_blank" rel="noopener"
      aria-label="Open live app">
     <i class="fa-solid fa-window-restore me-2" aria-hidden="true"></i>
@@ -50,7 +50,7 @@ Key features include:
   </a>
 </div>
 
-<iframe src="https://semesterview-app.vercel.app/"
+<iframe src="https://semesterview-app.vercel.app/login"
         style="width:100%; height:900px; border:none;"
         allowfullscreen>
 </iframe>
