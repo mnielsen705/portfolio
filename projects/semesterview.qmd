@@ -22,7 +22,7 @@ Key features include:
 
 ## Live Product Demo
 
-<div class="d-flex justify-content-center gap-3 my-4">
+<div class="d-flex justify-content-center gap-3 my-4 flex-wrap">
   <!-- Open App button -->
   <a class="btn btn-primary d-inline-flex align-items-center"
      href="https://semesterview-app.vercel.app/"
@@ -30,6 +30,14 @@ Key features include:
      aria-label="Open live app">
     <i class="fa-solid fa-window-restore me-2" aria-hidden="true"></i>
     Open App in New Tab
+  </a>
+
+  <!-- Product Spec button -->
+  <a class="btn btn-outline-secondary d-inline-flex align-items-center"
+     href="semesterview-spec.html"
+     aria-label="View product specification">
+    <i class="fa-solid fa-file-lines me-2" aria-hidden="true"></i>
+    Product Spec
   </a>
 
   <!-- GitHub Source button -->

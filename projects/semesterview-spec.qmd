@@ -1,0 +1,301 @@
+---
+title: "SemesterView — Product Specification"
+date: "2026-03-10"
+---
+
+**Version:** 1.0 · **Status:** MVP shipped · **Live URL:** [semesterview-app.vercel.app](https://semesterview-app.vercel.app)
+
+---
+
+## 1. Product Overview
+
+SemesterView is a semester-long calendar tool for college students that surfaces scheduling conflicts before they happen. Unlike week-by-week planners, it shows the entire semester at once — layering recurring commitments (classes, work shifts, meetings) on top of variable obligations (exams, deadlines, personal events) so students can spot collisions early.
+
+**Core problem solved:** College students with planning habits still drop the ball because their tools only show them the near future. By the time they see a conflict, it's already a crisis.
+
+**The one core action:** A user opens the app, sees their full semester, and immediately identifies a week where two high-stakes obligations collide — before either has passed.
+
+---
+
+## 2. Target User
+
+**Persona: Emma Chen**
+
+| Attribute | Detail |
+|-----------|--------|
+| Age / Role | 20–22, junior or senior undergraduate |
+| University | Mid-to-large (3,000+ students) |
+| Course load | 15+ credit hours + 2–3 external commitments |
+| Pain moment | Sunday night planning and mid-semester crunch |
+| Tools today | Color-coded planners, Canvas, phone reminders, sticky notes |
+
+**What Emma wants:**
+
+- Good grades without sacrificing relationships, health, or personal goals
+- To feel in control — not constantly reacting to the next thing
+- To stop losing 3–5 hours/week to last-minute scrambles
+
+**Willingness to pay:** Moderate (3/5). Price-sensitive personally; parents may subsidize if the product demonstrably reduces stress and improves academic outcomes.
+
+---
+
+## 3. Value Proposition
+
+> We help college students who have a planning system but still drop the ball **see conflicts before they happen** by showing the entire semester at once and flagging when academic obligations collide with important personal and family events.
+
+**Differentiation:** Not another to-do list or week view. The insight is the full-semester horizon — the thing no current tool gives students without manual effort.
+
+---
+
+## 4. Features As Built
+
+### 4.1 Authentication & Data Persistence
+
+- Email/password signup and login via Supabase Auth
+- All event data stored server-side, scoped to the authenticated user via Row Level Security (RLS)
+- Sessions persist for 30 days without re-login (cookie-based via `@supabase/ssr`)
+- Logout destroys the session and redirects to login
+
+### 4.2 Semester Setup & Switching
+
+- On first login, users are prompted to create a semester (name, start date, end date)
+- Multiple semesters supported — users can create additional semesters and switch between them via a dropdown in the header
+- Active semester persisted in `localStorage` so the correct semester loads on return visits
+
+### 4.3 Recurring Commitments
+
+Recurring commitments represent fixed, repeating events (classes, work shifts, weekly meetings).
+
+| Field | Type | Required | Notes |
+|-------|------|----------|-------|
+| title | string | yes | |
+| days_of_week | string[] | yes | e.g. `["monday", "wednesday"]` |
+| start_time | string | yes | 24h format HH:MM |
+| end_time | string | yes | Must be after start_time |
+| start_date | date | yes | Must be within semester range |
+| end_date | date | yes | Must be after start_date |
+| category | enum | yes | `school`, `work`, `other` |
+
+**Visual styling:** Cool colors — school (blue), work (green), other (gray).
+
+### 4.4 Variable Obligations
+
+Variable obligations represent one-time, high-stakes events (exams, deadlines, personal events).
+
+| Field | Type | Required | Notes |
+|-------|------|----------|-------|
+| title | string | yes | |
+| date | date | yes | Must be within semester range |
+| time | string | no | 24h format HH:MM |
+| category | enum | yes | `exam`, `deadline`, `personal`, `family`, `work` |
+
+**Visual styling:** Warm colors — exam (red/pink), deadline (orange), personal (purple), family (yellow), work (green).
+
+**Delete behaviors:**
+
+- **Delete this obligation** — removes the single event permanently from the database
+- **Delete All Future Events of this Title** — hides all obligations with the same title client-side via `localStorage`; events remain in the database but are filtered from the UI
+
+### 4.5 Conflict Detection
+
+Conflict detection is computed entirely client-side on every render, wrapped in `useMemo`.
+
+| Type | Trigger |
+|------|---------|
+| High-priority cluster | 3+ events with category `exam`, `deadline`, `personal`, or `family` on the same day |
+| Time overlap | Any two events with an exact start/end time overlap on the same day |
+
+Flags render inline in the semester grid without any user action and update in real time when events are added, edited, or deleted.
+
+### 4.6 Calendar Import
+
+Users can import events from external calendars via `.ics` or `.ical` files.
+
+**Supported sources:**
+
+- **Canvas** — Calendar → Calendar Feed (bottom right) → Click to View Calendar Feed → download
+- **Learning Suite** — Open a course → Schedule → Get iCalendar Feed → Download Calendar File
+- **Google Calendar** — Settings gear → Import & Export → Export → download (unzip if multiple calendars)
+
+**Import behavior:**
+
+- Parsed client-side with a custom RFC 5545 iCal parser (no third-party dependency)
+- Category auto-inferred: titles containing exam/quiz/test/midterm/final → `exam`, all others → `deadline`
+- User can review and override category per event before confirming
+- Up to 500 events per import batch
+- **One-time snapshot** — imports do not sync; re-import required to pull in new events
+
+---
+
+## 5. Data Model
+
+### Semesters
+
+```sql
+CREATE TABLE semesters (
+  id          uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id     uuid NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+  name        text NOT NULL,
+  start_date  date NOT NULL,
+  end_date    date NOT NULL,
+  created_at  timestamptz DEFAULT now()
+);
+```
+
+### Recurring Commitments
+
+```sql
+CREATE TYPE commitment_category AS ENUM ('school', 'work', 'other');
+CREATE TYPE day_of_week AS ENUM ('monday','tuesday','wednesday','thursday','friday','saturday','sunday');
+
+CREATE TABLE recurring_commitments (
+  id           uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id      uuid NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+  semester_id  uuid NOT NULL REFERENCES semesters(id) ON DELETE CASCADE,
+  title        text NOT NULL,
+  days_of_week day_of_week[] NOT NULL,
+  start_time   text NOT NULL,
+  end_time     text NOT NULL,
+  start_date   date NOT NULL,
+  end_date     date NOT NULL,
+  category     commitment_category NOT NULL DEFAULT 'school',
+  created_at   timestamptz DEFAULT now()
+);
+```
+
+### Variable Obligations
+
+```sql
+CREATE TYPE obligation_category AS ENUM ('exam','deadline','personal','family','work');
+
+CREATE TABLE variable_obligations (
+  id           uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id      uuid NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+  semester_id  uuid NOT NULL REFERENCES semesters(id) ON DELETE CASCADE,
+  title        text NOT NULL,
+  date         date NOT NULL,
+  time         text,
+  category     obligation_category NOT NULL,
+  created_at   timestamptz DEFAULT now()
+);
+```
+
+All tables have Row Level Security enabled — users can only read and write their own rows.
+
+---
+
+## 6. API Reference
+
+All endpoints require an authenticated Supabase session. Unauthenticated requests return `401`.
+
+### Semesters
+
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/api/semesters` | List all semesters for the authenticated user |
+| POST | `/api/semesters` | Create a new semester |
+
+### Recurring Commitments
+
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/api/recurring-commitments?semester_id={id}` | List commitments for a semester |
+| POST | `/api/recurring-commitments` | Create a new commitment |
+| PUT | `/api/recurring-commitments/[id]` | Update a commitment |
+| DELETE | `/api/recurring-commitments/[id]` | Delete a commitment |
+
+### Variable Obligations
+
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/api/variable-obligations?semester_id={id}` | List obligations for a semester |
+| POST | `/api/variable-obligations` | Create a new obligation |
+| PUT | `/api/variable-obligations/[id]` | Update an obligation |
+| DELETE | `/api/variable-obligations/[id]` | Delete an obligation |
+
+### Import
+
+| Method | Path | Description |
+|--------|------|-------------|
+| POST | `/api/import/ical` | Bulk insert up to 500 obligations from a parsed iCal file |
+
+---
+
+## 7. Technical Architecture
+
+### Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Framework | Next.js 16 (App Router, Turbopack) |
+| Language | TypeScript |
+| Styling | Tailwind CSS v4 |
+| UI components | shadcn/ui v3 |
+| Forms | react-hook-form + Zod v4 |
+| Auth | Supabase SSR |
+| Database | Supabase PostgreSQL |
+| Hosting | Vercel |
+
+### State Management
+
+All server state is managed by a custom hook (`useSemesterData`) that applies optimistic updates — UI changes reflect immediately before API confirmation, with rollback on failure. Conflict detection is pure client-side, running on every render via `useMemo` with no server calls required.
+
+---
+
+## 8. UI/UX Decisions
+
+### Color System
+
+| Category | Use |
+|----------|-----|
+| School (blue) | Recurring classes |
+| Work (green) | Recurring work shifts |
+| Other (gray) | Other recurring events |
+| Exam (red/pink) | High-stakes test dates |
+| Deadline (orange) | Assignment due dates |
+| Personal (purple) | Personal events |
+| Family (yellow) | Family events |
+
+### Interaction Patterns
+
+- **Optimistic updates** — every create/edit/delete reflects in the UI immediately, with silent rollback on API failure
+- **Slide-in sheet** — event creation and editing uses a right-side sheet to keep the semester view visible
+- **Confirmation dialogs** — destructive actions require explicit confirmation
+- **Inline validation** — all form errors surface at the field level on blur or submit attempt
+
+---
+
+## 9. Known Limitations
+
+| Limitation | Detail |
+|-----------|--------|
+| iCal import is one-time | No live sync — re-import required for new events |
+| Hide vs. delete | "Delete All Future Events" hides events in localStorage rather than deleting from the database |
+| No recurring event import | iCal RRULE events are not parsed — each instance is imported as a separate variable obligation |
+| No undo | Deletion is permanent |
+| Obligation categories only | Imported events cannot be created as recurring commitments |
+
+---
+
+## 10. Out of Scope (Post-MVP)
+
+| Feature | Notes |
+|---------|-------|
+| Canvas / LMS OAuth | Live sync via API — requires institution-by-institution OAuth setup |
+| Google Calendar live sync | Would require Google OAuth and webhooks |
+| Convert obligation to commitment | Requires user to supply missing recurring fields |
+| Push / email notifications | Reminders for upcoming conflict weeks |
+| Sharing a semester view | Read-only shareable link |
+| Dark mode | Not implemented |
+| Undo / redo | Not implemented |
+
+---
+
+## 11. Success Metrics
+
+| Function | Metric | Target |
+|----------|--------|--------|
+| Auth & Persistence | % of users who create an account and find events intact after logout/login | 100% |
+| Event Entry | % of users who successfully create both event types without assistance | >90% |
+| Semester View | % of users who can describe a flagged week without clicking into it | >80% |
+| Conflict Detection | % of users who identify a known conflict using the app | 100% |
