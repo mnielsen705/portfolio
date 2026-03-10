@@ -14,7 +14,7 @@ Key features include:
 - Create recurring commitments with days of week, start/end time, and date range
 - Create variable obligations (exams, deadlines, personal and family events)
 - Automatic conflict detection — flags days with 3+ high-priority events or exact time overlaps
-- Import calendar events directly from Canvas, Learning Suite, or Google Calendar (.ics / .ical)
+- Import calendar events directly from Canvas, Learning Suite, or Google Calendar (.ics and .ical formats supported)
 - Multiple semesters with quick switching
 - Real-time updates when events are added, edited, or deleted
 - User authentication with 30-day session persistence

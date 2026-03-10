@@ -69,3 +69,5 @@ $RECYCLE.BIN/
 # Temporary files
 *.tmp
 *.temp
+**/*.quarto_ipynb
+.vercel
