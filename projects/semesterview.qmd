@@ -55,6 +55,20 @@ Key features include:
         allowfullscreen>
 </iframe>
 
+## Calendar Import in Action
+
+::: {layout-ncol=3}
+![Step 1: Upload your .ics file](../images/sv-screenshot-1.png)
+
+![Step 2: Review and categorize events](../images/sv-screenshot-2.png)
+
+![Step 3: Events added to your semester](../images/sv-screenshot-3.png)
+:::
+
+## User Feedback
+
+In three usability sessions testing calendar import on SemesterView, all testers successfully completed the core task — but none without friction. The primary pain point was navigating Canvas and Learning Suite to locate and export calendar files, not the app itself; one tester resorted to Googling how to find the Canvas .ics export, another couldn't locate the Learning Suite calendar import, and a third was critically blocked by not knowing how to unzip a file on Mac. Minor issues included an unintuitive click target in creating an "obligation" and a missing end-time field. Despite the friction, all three testers said they would use the product again (one conditionally, only if bulk import were available). The top priorities are: (1) add step-by-step import guides for Canvas and Learning Suite, (2) include Mac-specific file handling tips at the point of download, and (3) explore bulk import for Learning Suite or clearly set expectations around the class-by-class flow.
+
 ## Technical Details
 
 **Framework/Stack:** Next.js 16, TypeScript
