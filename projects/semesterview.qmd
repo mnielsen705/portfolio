@@ -57,13 +57,11 @@ Key features include:
 
 ## Calendar Import in Action
 
-::: {layout-ncol=3}
-![Step 1: Upload your .ics file](../images/sv-screenshot-1.png)
+![Step 1: Upload your .ics file](../images/sv-screenshot-1.png){width=100%}
 
-![Step 2: Review and categorize events](../images/sv-screenshot-2.png)
+![Step 2: Review and categorize events](../images/sv-screenshot-2.png){width=100%}
 
-![Step 3: Events added to your semester](../images/sv-screenshot-3.png)
-:::
+![Step 3: Events added to your semester](../images/sv-screenshot-3.png){width=100%}
 
 ## User Feedback
 
