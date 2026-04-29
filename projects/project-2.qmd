@@ -1,179 +1,70 @@
 ---
-title: "Business Case Presentation"
-description: "Pitch deck and strategic business case for new product development"
-date: "2024-10-01"
-image: ../images/project2-preview.jpg
-categories: [Business Strategy, Pitch Deck, Product Development]
+title: "SemesterView"
+date: "2026-04-29"
+categories: [Next.js, TypeScript, Supabase, AI, Vercel]
 ---
 
-## Assignment Overview
+## Overview
 
-This project focused on developing a comprehensive business case and pitch presentation for a new product opportunity. The assignment required identifying a market need, analyzing the opportunity, and presenting a compelling case for why the product should be built and funded.
+SemesterView is a semester-long calendar tool for college students that surfaces scheduling conflicts before they happen. Unlike week-by-week planners, it shows the entire semester at once — layering recurring commitments (classes, work shifts, meetings) on top of variable obligations (exams, deadlines, events) so students can spot collisions early.
 
-## Executive Summary
+Key features include:
 
-**Product Concept**: [Brief description of your proposed product/service]
+- **Full-semester view** — see every week from first day of class to last final at a glance
+- **Conflict detection** — automatically flags days with 3+ high-priority events or exact time overlaps
+- **Recurring commitments** — add classes or shifts with days of week, time, and date range
+- **Variable obligations** — track exams, deadlines, and personal events with categories
+- **iCal import & live sync** — one-time import or live-syncing feed from Canvas, Google Calendar, or Learning Suite
+- **AI Daily Assistant** — Claude-powered briefing that surfaces your most pressing priorities each morning
+- **Click-to-add** — tap any time slot to pre-fill the event form
 
-**Market Opportunity**: [Size and growth potential of target market]
+## Live Product Demo
 
-**Investment Required**: [Estimated funding needed]
+<div class="d-flex justify-content-center gap-3 my-4">
+  <a class="btn btn-primary d-inline-flex align-items-center"
+     href="https://semesterview-app.vercel.app/"
+     target="_blank" rel="noopener"
+     aria-label="Open live app">
+    <i class="fa-solid fa-window-restore me-2" aria-hidden="true"></i>
+    Open App in New Tab
+  </a>
 
-**Expected Return**: [Projected revenue and profitability timeline]
+  <a class="btn btn-outline-dark d-inline-flex align-items-center"
+     href="https://github.com/mnielsen705/semesterview-app"
+     target="_blank" rel="noopener"
+     aria-label="Open GitHub source">
+    <i class="fa-brands fa-github me-2" aria-hidden="true"></i>
+    View Source on GitHub
+  </a>
+</div>
 
-**Recommendation**: [Clear go/no-go recommendation with supporting rationale]
+<iframe src="https://semesterview-app.vercel.app/"
+        style="width:100%; height:900px; border:none;"
+        allowfullscreen>
+</iframe>
 
-## Problem Statement
+## Problem & Approach
 
-### Market Problem
-- **Issue Identification**: What specific problem does your product solve?
-- **Target Audience**: Who experiences this problem most acutely?
-- **Current Solutions**: How are people solving this problem today?
-- **Gap Analysis**: What's missing from existing solutions?
+College students with planning habits still drop the ball because their tools only show the near future. By the time a conflict becomes visible, it's already a crisis. SemesterView flips the model — it gives students the full-semester horizon so they can protect high-stakes weeks before they arrive.
 
-### Quantifying the Problem
-- **Market Size**: How many people/organizations face this issue?
-- **Economic Impact**: What does this problem cost users currently?
-- **Urgency**: Why is now the right time to solve this problem?
-- **Evidence**: What data supports the existence and scale of this problem?
+The core design challenge was fitting an entire semester (16+ weeks) into a readable, mobile-friendly grid while still communicating event density and conflict severity at a glance.
 
-## Market Analysis
+## Technical Details
 
-### Industry Overview
-- **Market Size**: Total Addressable Market (TAM), Serviceable Addressable Market (SAM)
-- **Growth Trends**: Historical growth rates and future projections
-- **Key Drivers**: What factors are driving market growth?
-- **Market Maturity**: Where is this market in its lifecycle?
+**Framework/Stack:** Next.js 16 (App Router, Turbopack), TypeScript
 
-### Competitive Landscape
-- **Direct Competitors**: Who offers similar solutions?
-- **Indirect Competitors**: What alternative approaches exist?
-- **Competitive Advantages**: How will you differentiate?
-- **Market Positioning**: Where will you fit in the competitive landscape?
+**UI Components:** shadcn/ui, Tailwind CSS v4, react-hook-form + Zod
 
-### Customer Analysis
-- **Target Segments**: Primary and secondary customer groups
-- **User Personas**: Detailed profiles of ideal customers
-- **Buying Behavior**: How do customers make purchase decisions?
-- **Price Sensitivity**: What are customers willing to pay?
+**Backend:** Supabase (PostgreSQL + Row Level Security + Auth)
 
-## Solution Overview
+**AI:** Anthropic Claude (`claude-haiku-4-5`) via streaming API — daily briefing and follow-up Q&A
 
-### Product Vision
-- **Core Value Proposition**: What unique value do you provide?
-- **Key Features**: What are the essential product capabilities?
-- **User Experience**: How will customers interact with your product?
-- **Differentiation**: What makes your solution superior?
+**Deployment:** Vercel (auto-deploy on push to main)
 
-### Product Strategy
-- **Development Approach**: Build vs. buy vs. partner decisions
-- **Technology Stack**: What technical foundation will you use?
-- **Scalability**: How will the product grow with demand?
-- **Innovation**: What makes this solution innovative?
+**Tools Used:**
 
-## Business Model
-
-### Revenue Model
-- **Pricing Strategy**: How will you price your product?
-- **Revenue Streams**: What are your sources of income?
-- **Customer Acquisition**: How will you attract customers?
-- **Unit Economics**: What are your cost and revenue per customer?
-
-### Financial Projections
-- **Revenue Forecast**: 3-5 year revenue projections
-- **Cost Structure**: Development, operational, and marketing costs
-- **Profitability Timeline**: When will you reach break-even?
-- **Investment Requirements**: Funding needed for different milestones
-
-### Go-to-Market Strategy
-- **Launch Strategy**: How will you introduce the product?
-- **Marketing Channels**: How will you reach customers?
-- **Sales Strategy**: Direct, partner, or hybrid approach?
-- **Customer Success**: How will you ensure customer satisfaction?
-
-## Implementation Plan
-
-### Development Roadmap
-- **Phase 1**: MVP development and initial testing
-- **Phase 2**: Full product launch and market entry  
-- **Phase 3**: Scale and expansion opportunities
-- **Milestones**: Key deliverables and timeline
-
-### Resource Requirements
-- **Team Structure**: What roles and skills are needed?
-- **Technology Infrastructure**: What systems and tools are required?
-- **Capital Requirements**: Funding needs by phase
-- **Strategic Partnerships**: What alliances will accelerate success?
-
-### Risk Analysis
-- **Market Risks**: What could change in the market?
-- **Technical Risks**: What development challenges might arise?
-- **Competitive Risks**: How might competitors respond?
-- **Mitigation Strategies**: How will you address each risk?
-
-## Success Metrics
-
-### Key Performance Indicators
-- **Customer Metrics**: Acquisition, retention, satisfaction
-- **Business Metrics**: Revenue, profitability, market share
-- **Product Metrics**: Usage, engagement, feature adoption
-- **Operational Metrics**: Efficiency, quality, scalability
-
-### Success Criteria
-- **Short-term (6 months)**: [Specific measurable goals]
-- **Medium-term (1-2 years)**: [Growth and market position targets]
-- **Long-term (3-5 years)**: [Vision achievement and expansion goals]
-
-## Investment Recommendation
-
-### Case for Investment
-1. **Market Opportunity**: Large, growing market with clear need
-2. **Competitive Advantage**: Defensible differentiation and positioning
-3. **Team Capability**: Right skills and experience to execute
-4. **Financial Returns**: Attractive risk-adjusted return potential
-5. **Strategic Fit**: Aligns with organizational goals and capabilities
-
-### Expected Outcomes
-- **Revenue Impact**: [Projected revenue contribution]
-- **Market Position**: [Expected market share and positioning]
-- **Strategic Value**: [Broader organizational benefits]
-- **Growth Platform**: [Future expansion opportunities]
-
-## Next Steps
-
-### Immediate Actions (30 days)
-- [ ] Secure initial funding/approval
-- [ ] Finalize team structure and hiring
-- [ ] Complete technical feasibility analysis
-- [ ] Develop detailed project plan
-
-### Short-term Milestones (90 days)
-- [ ] Complete market validation research
-- [ ] Build MVP and conduct user testing
-- [ ] Establish key partnerships
-- [ ] Refine go-to-market strategy
-
-### Long-term Goals (1 year)
-- [ ] Launch product to target market
-- [ ] Achieve customer acquisition targets
-- [ ] Demonstrate product-market fit
-- [ ] Plan expansion opportunities
-
-## Appendices
-
-### Supporting Data
-- Market research reports and analysis
-- Customer interview findings
-- Competitive analysis details
-- Financial model assumptions
-
-### Presentation Materials
-- **Slide Deck**: [Link to presentation slides]
-- **Executive Summary**: [One-page business case summary]  
-- **Financial Model**: [Detailed financial projections]
-- **Supporting Research**: [Market data and analysis]
-
----
-
-**Skills Demonstrated:** Business Strategy, Market Analysis, Financial Modeling, Presentation Design, Strategic Planning
-
-**Tools Used:** PowerPoint/Keynote, Excel/Google Sheets, Market Research Databases, Survey Tools
+- Claude Code for development assistance
+- Supabase SSR for cookie-based session persistence
+- Custom conflict detection engine (`lib/conflict-detection.ts`)
+- iCal/RFC 5545 parser for Canvas and Google Calendar import
+- Vercel Cron for daily live-sync feed refresh

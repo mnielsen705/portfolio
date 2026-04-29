@@ -34,6 +34,6 @@ format:
 
 <div class="g-col-12 g-col-md-6 card">
 <h3><a href="projects/semesterview.html">SemesterView</a></h3>
-<p>A semester-long calendar that surfaces scheduling conflicts before they happen by showing your entire semester at once.</p>
+<p>A full-semester calendar for college students that detects scheduling conflicts before they happen — with AI-powered daily briefings and iCal sync.</p>
 </div>
 
